@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        let a = 10
+        const test = function(){
+            console.log(a)
+            for (let i=0;i<5;i++) {
+                console.log(i)
+            }
+            // console.log('outside for : '+i) //반복제어변수의 지역스코프유지 됨
+        }
+        test()
+        // let a = 'hello'     //중복선언 불가
+        console.log(a)
+        // test = 1000         //수정 불가능
+        console.log(test)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

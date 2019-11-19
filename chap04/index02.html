@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>SSAFY</title>
+    <style>
+    .common{margin:auto;  text-align:center; font-family: serif; font-size: 20px;}
+    .sat{color: blue;border-style: dotted;}
+    .sun{color: red; border-style:solid;}
+  </style>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+<div id = "mydirective" >
+  <!-- 삼항연산자를 이용해서 클래스 추가 
+       조건이 true면 첫번째 클래스가 추가되고 false면 두번째 클래스가 추가됨
+  -->
+<div class='common' v-bind:class="isSat?'sat':'sun'">토요일</div>
+<!-- 배열의 클래스 정보 중 true인 클래스를 추가 -->
+<div class='common' v-bind:class="[{sat:isSat}, {sun:isSun}]">일요일</div>
+</div>
+<script type = "text/javascript">
+  var model={sat:'ㅁ', isSat:true, isSun:true}
+  new Vue({
+    el:'#mydirective',
+    data:model
+  })
+</script>
+</body>
+</html>

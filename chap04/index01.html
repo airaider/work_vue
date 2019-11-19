@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>SSAFY</title>
+    <style>
+    .common{margin:auto;  text-align:center; font-family: serif; font-size: 20px;}
+    .sat{color: blue;border-style: dotted;}
+    .sun{color: red; border-style:solid;}
+  </style>
+  <script src="https://unpkg.com/vue"></script>
+</head>
+<body>
+<div id = "mydirective" >
+  <!-- sat 클래스를 추가 -->
+  <div class='common' v-bind:class='{sat}'>토요일</div>
+  <!-- isSat이 true이므로 sat 클래스를 추가 -->
+  <div class='common' v-bind:class='{sat:isSat}'>토요일</div>
+  <!-- !isSat이 false이므로 sat 클래스가 추가 되지 않음 -->
+  <div class='common' v-bind:class='{sat:!isSat}'>토요일</div>
+</div>
+</div>!
+<script type = "text/javascript">
+  var model={sat:'ㅁ', isSat:true, isSun:true}
+  new Vue({
+    el:'#mydirective',
+    data:model
+  })
+</script>
+</body>
+</html>

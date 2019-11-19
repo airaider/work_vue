@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Document</title>
+   <script src="http://unpkg.com/vue"></script>
+</head>
+<body>
+   <div id = 'first'>
+       <!-- Vue 객체의 모델 데이터를 화면에 출력 -->
+       <span>{{title}}</span><br>
+       <!-- Vue 객체에서 선언한 함수를 수행한 결과를 화면에 출력 -->
+       <span>{{showMyName('hello SSAFY')}}</span><br>   
+       <!-- Vue에서 event 연결  v-on:이벤트명="처리한 함수명" -->
+       <span v-on:click='changeMyName()'>이름 변경</span><br>
+    </div>
+    <span id='cl'>click me</span>
+</div>
+   <script>
+       // 일반적인 함수 => window의 함수로 추가됨
+       function a(){
+           console.log('a.............')
+           console.log(this)    // this는 window를 가르킨다
+       }
+       a()
+       window.onload = function(){
+           var cl = document.getElementById('cl')
+           cl.addEventListener('click', eventFun, true)
+       }
+
+       // 이벤트에 의해 호출될 함수
+    function eventFun(){
+           console.log('eventFun.............')
+           console.log(this)    //이벤트를 처리하는 함수 내에서 this는 이벤트가 발생한 대상을 가리킨다
+       }
+
+       var model = {title:'ssafy'}
+       var app = new Vue({
+           el:'#first',
+           data :model,
+           methods: {
+               showMyName: function(name) {
+                   console.log('showMyName............')
+                   console.log(this)    //생성자 함수 내에서 this는 해당 객체를 가르킨다
+                   return name+' '+new Date();
+               },
+               changeMyName: function(){
+                   console.log('changeMyName...........')
+                   console.log(this)    //생성자 함수 내에서 this는 해당 객체를 가르킨다
+                   this.$data.title="SSAFY Hello"
+               }
+           },
+       })
+   </script>
+</body>
+</html>

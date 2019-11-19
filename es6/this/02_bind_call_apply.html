@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        console.log(this)       // window
+        function test(){
+            console.log('test')
+            console.log(this)   // window
+        }
+        test()
+        let p1={age:26}
+        let p2={gender:'M'}
+        console.log('call.............')
+        test.call(p1)
+        test.call(p2)
+        test.call()
+        console.log('apply.............')
+        test.apply(p1)
+        test.apply(p2)
+        test.apply()
+
+        // 매개변수 전달의 차이
+        // call (p1,1,2)
+        // apply (p1,[1,2])
+
+        
+        console.log('bind.............')
+        test.bind(p1).call()
+        const test2 = test.bind(p2)
+        test2()
+        test2.call(p1)
+
+        // this의 의미를 영구적으로 fix
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

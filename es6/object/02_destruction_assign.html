@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        let p1={name:'홍기환', age:26}
+        let arr = [11,12,13]
+
+        let a = arr[0]
+        let b = arr[1]
+        let c = arr[2]
+        console.log(a,b,c)
+        
+        let[d,e,f]=arr
+        console.log(d,e,f)
+
+        let[g,h]=arr
+        console.log(g,h)
+
+        let {name, age} = p1        //구조분해할 객체의 속성명과 변수가 같은 경우
+        console.log(name,age)
+
+        let {name:n1, age:a1}=p1    //구조분해할 객체의 속성명과 변수가 다른 경우
+        console.log(n1,a1)
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

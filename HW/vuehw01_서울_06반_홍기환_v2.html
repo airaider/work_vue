@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <script type="text/javascript" src="http://unpkg.com/vue"></script>
+</head>
+
+<body>
+    <section id="signup_section">
+        <div id="signup_form">
+            <h2 align="center">사원 목록</h2>
+            <table align="center">
+                <!-- 반복 태그에 for를 사용 -->
+                <tr bgcolor="skyblue">
+                    <th>사원 아이디</th>
+                    <th>사원명</th>
+                    <th>메일id</th>
+                    <th>직책</th>
+                    <th>dept_id</th>
+                    <th>연봉</th>
+                    <th>퇴사</th>
+                </tr>
+                <tr v-for="flag in s" align="center">
+                    <td>{{flag.id}}</td>
+                    <td>{{flag.name}}</td>
+                    <td>{{flag.mailid}}</td>
+                    <td>{{flag.title}}</td>
+                    <td>{{flag.dept_id}}</td>
+                    <td>{{flag.salary}}</td>
+                    <td><input type="button" value="퇴사"></td><br>
+                </tr>
+            </table>
+        </div>
+    </section>
+    <script type="text/javascript">
+        request = new XMLHttpRequest();
+        request.open('GET', 'employee.json', true);
+        request.onload = function () {
+            var success
+            if (request.status >= 200 && request.status < 400) {
+                success = JSON.parse(request.responseText);
+            }
+            console.log(success)
+            var model = { s: success }
+            var app = new Vue({
+                el: '#signup_section',
+                data: model
+            })
+        };
+        request.send();
+    </script>
+</body>
+
+</html>

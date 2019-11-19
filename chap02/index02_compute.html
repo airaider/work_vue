@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="http://unpkg.com/vue"></script>
+</head>
+<body>
+    <div id="first">
+        <div>{{title}}</div><br>
+        <div v-on:click='showMyName'>클릭</div>
+
+    </div>
+    <script>
+        var app = new Vue({
+            el:'#first',
+            data:{title:'Ssafy'},
+            methods:{   //호출할 때 마다 매번 수행됨
+                // showMyName:function(){
+                //     console.log('showMyName..........')
+                //     return this.$data.title='SSAFY hello'
+                // },
+            },                            // 라이프 사이클과 관련됨
+            computed:{                    // cache에 들어가는 정적 데이터 초기화 관리
+                showMyName:function(){    // watched를 이용해서 변경된 내용으로 반영 시킬 수 있다
+                    console.log('showMyName..........')     // 수행된 결과를 cache에 저장한다
+                    return this.$data.title='SSAFY hello'   //데이터가 변경될 때 계산을 다시 해서 cache에 저장
+                },
+            }
+        })
+    </script>
+</body>
+</html>

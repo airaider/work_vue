@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>axios</title>
+  <style>
+    body {background-color: #ffffff;}
+    #second  > h2 { margin:auto; padding:0px; text-align:center; color: blue;}	
+    .red {color: red;}
+    #tid {border: 1px; border-color: blue; border-collapse: collapse; margin:auto;text-align:center;}
+  </style>
+  <script src="https://unpkg.com/vue"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+</head>
+<body>
+  <div id='second'>
+   <h2>SSAFY SAFE FOOD</h2>
+  </div>
+<div id="app">
+  <section v-if="errored">
+    <p>network Error</p>
+  </section>
+  <section v-else>
+    <div v-if="loading">Loading.....</div>
+    <div v-else>
+      <table border="1">
+        <tr>
+          <td>분류</td>
+          <td>이름</td>
+          <td>이미지</td>
+        </tr>
+        <tr v-for='food in info'>
+          <td v-html='food.productGb'></td>
+          <td v-html='food.prdlstNm'></td>
+          <td><img v-bind:src='food.imgurl1'></td>
+        </tr>
+      </table>
+    </div>
+  </section>
+</div>				
+  <script type="text/javascript">
+    new Vue({
+      el:'#app',
+      data:function(){
+        return {info:null, loading:true, errored:false}
+      },
+      mounted:function () {
+        axios.get('./food.json') //json이나 xml을 전송받을 경로
+            // 비동기 통신이 완료가 된 경우 response 객체를 리턴
+            //  .then(function(response){
+            //    console.log('응답 ok')
+            //    console.log(response)
+            //    console.log(this)
+            //  })
+             .then(response=>{
+              this.info=response.data
+              console.log('응답 ok')
+              console.log(this) // this는 Vue를 지칭
+             })
+            //  비동기 통신 중에 오류가 발생하면 error정보가 전달됨
+             .catch(error=>{
+               console.log(error)
+               this.errored = true
+             })
+             .finally(
+               ()=>this.loading=false
+             )
+      },
+    })
+  </script>
+</body>
+</html>

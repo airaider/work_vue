@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        /* arrows 함수는 ECMS(es6)에 추가된 기능으로 함수의 축약형
+            - C#, java8 등 사용하는 람다식과 유사한 문법
+            - javascript에서 this는 특수한 case를 빼면 windows를 지칭하는것과 달리
+              arrows 함수에서는 코드의 상위 스코프를 지칭한다
+            - 형식] 변수 => 표현식      변수 => ( // 여러줄의 표현식)
+                   (변수, ...) => 표현식         // 변수가 없거나 여러개 일때
+        */
+        var arr=[2,4,6,8]
+                        //v는 arr배열의 요소
+        var odd=arr.map(v=>v+1)
+                        //v는 arr배열의 요소, i는 요소의 index
+        var num = arr.map((v,i)=>v+i)
+        console.log(odd)
+        console.log(num)
+        var fives=[]
+        num.forEach(v=>{
+            if(v%5==0){
+                fives.push(v)
+            }
+        })
+        console.log(fives)
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
